@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Logements · Hive</title>
+  <meta name="description" content="Hive : logements notés par les élèves de KEDGE Marseille.">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/hive.css">
+</head>
+<body data-page="logements">
+<div class="app">
+  <main class="content">
+    <div class="page">
+      <header class="page-head">
+        <div>
+          <div class="eyebrow">KEDGE Marseille · Luminy</div>
+          <h1>Trouve ton logement</h1>
+          <p class="sub">Avis d'élèves vérifiés · rien à payer avant la signature</p>
+        </div>
+        <div class="page-head__actions">
+          <label class="search search--narrow">
+            <span class="ico" data-icon="search"></span>
+            <span class="visually-hidden">Chercher un logement</span>
+            <input id="recherche" type="search" placeholder="Quartier, rue ou temps jusqu'à Luminy">
+          </label>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <div class="segmented segmented--fit glass" role="group" aria-label="Disponibilité" id="onglets">
+          <button type="button" data-tab="dispo" aria-pressed="true"><span>Disponibles · <span data-count="dispo"></span></span></button>
+          <button type="button" data-tab="bientot" aria-pressed="false"><span>Se libèrent bientôt · <span data-count="bientot"></span></span></button>
+        </div>
+        <div class="chips" role="group" aria-label="Filtres" id="filtres">
+          <button type="button" class="chip" data-filter="note" aria-pressed="false">Avis 4 et plus</button>
+          <button type="button" class="chip" data-filter="prix" aria-pressed="false">Jusqu'à 650 €</button>
+          <button type="button" class="chip" data-filter="meuble" aria-pressed="false">Meublé</button>
+          <button type="button" class="chip" data-filter="mobilite" aria-pressed="false">Bail mobilité</button>
+        </div>
+        <label class="sort">Trier
+          <select id="tri">
+            <option value="pertinence">Pertinence</option>
+            <option value="prix">Prix croissant</option>
+            <option value="trajet">Trajet vers Luminy</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="cols">
+        <section class="cols__main" aria-label="Liste des logements">
+          <div class="listings" id="liste"></div>
+        </section>
+
+        <aside class="cols__side">
+          <div class="map-wrap">
+            <div class="map" aria-label="Carte des logements autour de Luminy">
+              <span class="map__road" aria-hidden="true"></span>
+              <span class="map__label">Carte · Marseille</span>
+              <div id="pins"></div>
+            </div>
+          </div>
+
+          <section class="glass card" aria-labelledby="autour-titre">
+            <h2 id="autour-titre">Vivre autour de Luminy</h2>
+            <div class="around">
+              <div class="around__item"><span class="bubble"><span class="ico" data-icon="bus"></span></span><span><strong>Bus vers le campus</strong><span class="muted">Les lignes recommandées par la promo</span></span></div>
+              <div class="around__item"><span class="bubble"><span class="ico" data-icon="cart"></span></span><span><strong>Courses</strong><span class="muted">Supermarchés près des logements</span></span></div>
+              <div class="around__item"><span class="bubble"><span class="ico" data-icon="wash"></span></span><span><strong>Laverie</strong><span class="muted">La moins chère du quartier selon la promo</span></span></div>
+              <div class="around__item"><span class="bubble"><span class="ico" data-icon="cross"></span></span><span><strong>Santé</strong><span class="muted">Pharmacies et médecins proches</span></span></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

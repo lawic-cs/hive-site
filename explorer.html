@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Explorer · Hive</title>
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/hive.css">
+</head>
+<body data-page="explorer">
+<div class="app">
+  <main class="content">
+    <div class="page">
+      <a class="back glass" href="parcours.html"><span class="ico" data-icon="back"></span>Mon orientation</a>
+
+      <header class="page-head">
+        <div>
+          <div class="eyebrow" id="eyebrow-metier">Mon orientation</div>
+          <h1>Explorer</h1>
+          <p class="sub">Formations, certifications, événements et stages, notés par les élèves</p>
+        </div>
+        <div class="page-head__actions">
+          <label class="search search--narrow">
+            <span class="ico" data-icon="search"></span>
+            <span class="visually-hidden">Chercher dans le catalogue</span>
+            <input id="recherche" type="search" placeholder="Formation, certification, événement…">
+          </label>
+          <button type="button" class="btn btn--ghost filters-toggle" aria-expanded="false" aria-controls="filtres">
+            <span class="ico" data-icon="filter"></span>Filtres
+          </button>
+        </div>
+      </header>
+
+      <div class="cols">
+        <aside class="filters glass" id="filtres" aria-label="Filtres">
+          <fieldset>
+            <legend>Type</legend>
+            <div class="pills">
+              <button type="button" class="pill-btn" data-group="type" data-value="Tout" aria-pressed="true">Tout</button>
+              <button type="button" class="pill-btn" data-group="type" data-value="Formations" aria-pressed="false">Formations</button>
+              <button type="button" class="pill-btn" data-group="type" data-value="Certifications" aria-pressed="false">Certifications</button>
+              <button type="button" class="pill-btn" data-group="type" data-value="Événements" aria-pressed="false">Événements</button>
+              <button type="button" class="pill-btn" data-group="type" data-value="Stages" aria-pressed="false">Stages</button>
+              <button type="button" class="pill-btn" data-group="type" data-value="Portes ouvertes" aria-pressed="false">Portes ouvertes</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Prix</legend>
+            <div class="pills">
+              <button type="button" class="pill-btn" data-group="prix" data-value="Tout" aria-pressed="true">Tout</button>
+              <button type="button" class="pill-btn" data-group="prix" data-value="Gratuit" aria-pressed="false">Gratuit</button>
+              <button type="button" class="pill-btn" data-group="prix" data-value="Jusqu'à 100 €" aria-pressed="false">Jusqu'à 100 €</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Format</legend>
+            <div class="pills">
+              <button type="button" class="pill-btn" data-group="format" data-value="Tout" aria-pressed="true">Tout</button>
+              <button type="button" class="pill-btn" data-group="format" data-value="En ligne" aria-pressed="false">En ligne</button>
+              <button type="button" class="pill-btn" data-group="format" data-value="Sur place" aria-pressed="false">Sur place</button>
+            </div>
+          </fieldset>
+          <div class="switch-row">
+            <span><strong id="rencontres-label">Fait rencontrer des pros</strong><span class="muted">Événements, portes ouvertes, stages</span></span>
+            <button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="rencontres-label" data-rencontres></button>
+          </div>
+        </aside>
+
+        <section class="results" aria-labelledby="nb">
+          <h2 id="nb"></h2>
+          <div class="results__grid" id="resultats"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

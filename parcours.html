@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Mon parcours · Hive</title>
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/hive.css">
+</head>
+<body data-page="parcours">
+<div class="app">
+  <main class="content">
+    <div class="page">
+      <header class="page-head">
+        <div>
+          <div class="eyebrow" id="eyebrow-metier">Mon orientation</div>
+          <h1>Mon parcours</h1>
+          <p class="sub">De ton entrée à KEDGE jusqu'à ton premier emploi</p>
+        </div>
+        <div class="page-head__actions">
+          <a class="btn btn--ghost" href="explorer.html"><span class="ico" data-icon="search"></span>Explorer le catalogue</a>
+          <button type="button" class="btn" data-traj-open aria-expanded="false" aria-controls="trajectoire">Modifier ma trajectoire</button>
+        </div>
+      </header>
+
+      <section class="glass card" id="trajectoire" hidden aria-labelledby="trajectoire-titre">
+        <h2 id="trajectoire-titre">Modifier ma trajectoire</h2>
+        <div class="form-grid">
+          <label class="field-l">Métier visé
+            <select id="choix-metier">
+              <option value="ma">M&amp;A</option>
+              <option value="trading">Trading</option>
+            </select>
+          </label>
+          <label class="field-l">Entrée à KEDGE
+            <select id="choix-entree">
+              <option value="L3">En L3</option>
+              <option value="M1">En M1</option>
+            </select>
+          </label>
+        </div>
+        <p class="sub">Tes années terminées restent figées. Ton parcours est recalculé à partir de l'année en cours, en gardant tes acquis.</p>
+        <div class="pack__actions">
+          <button type="button" class="btn" data-recalc>Recalculer mon parcours</button>
+          <button type="button" class="btn btn--ghost" data-traj-close>Annuler</button>
+        </div>
+      </section>
+
+      <section class="goal glass" aria-labelledby="metier">
+        <div class="goal__top">
+          <div>
+            <div class="eyebrow">Objectif · premier emploi</div>
+            <div class="goal__title" id="metier"></div>
+            <p class="sub" id="detail"></p>
+          </div>
+          <div class="stats" id="stats"></div>
+        </div>
+        <div class="years" id="annees"></div>
+      </section>
+
+      <section class="glass card" id="options" aria-live="polite"></section>
+
+      <div class="cols">
+        <div class="cols__main">
+          <section class="card glass" aria-labelledby="actions-titre">
+            <div class="section-head"><h2 id="actions-titre">Les 3 actions qui comptent maintenant</h2><span class="muted" id="semestre"></span></div>
+            <div class="progress" id="semestre-barre" role="progressbar" aria-label="Objectifs du semestre faits" aria-valuemin="0"><div></div></div>
+            <div class="actions" id="actions" aria-live="polite"></div>
+            <div class="actions" id="objectifs" hidden></div>
+            <button type="button" class="btn btn--ghost btn--sm objectifs-btn" id="voir-objectifs" aria-expanded="false" aria-controls="objectifs">Voir tous les objectifs du semestre</button>
+          </section>
+
+          <section class="glass card" aria-labelledby="echelle-titre">
+            <div class="section-head"><h2 id="echelle-titre">L'échelle d'accès</h2><span class="muted">Du plus accessible au plus sélectif</span></div>
+            <ol class="ladder" id="echelle"></ol>
+          </section>
+        </div>
+
+        <aside class="cols__side">
+          <section class="glass card" id="acquis"></section>
+
+          <section class="dark" id="stage" aria-live="polite"></section>
+
+          <section class="glass card" aria-labelledby="dates-titre">
+            <h2 id="dates-titre">Prochaines dates</h2>
+            <div class="dates" id="dates"></div>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

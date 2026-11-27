@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Marché · Hive</title>
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/hive.css">
+</head>
+<body data-page="marche">
+<div class="app">
+  <main class="content">
+    <div class="page">
+      <header class="page-head">
+        <div>
+          <div class="eyebrow">Entre élèves de KEDGE</div>
+          <h1>Marché</h1>
+          <p class="sub">Billets de concert, meubles, vélos, manuels : achète et revends entre élèves</p>
+        </div>
+        <div class="page-head__actions">
+          <label class="search search--narrow">
+            <span class="ico" data-icon="search"></span>
+            <span class="visually-hidden">Chercher un objet</span>
+            <input id="recherche" type="search" placeholder="Concert, bureau, vélo, tag…">
+          </label>
+          <button type="button" class="btn" data-sell-open aria-expanded="false" aria-controls="vendre">
+            <span class="ico" data-icon="plus"></span>Mettre en vente
+          </button>
+        </div>
+      </header>
+
+      <section class="glass card" id="vendre" hidden aria-labelledby="vendre-titre">
+        <div class="section-head"><h2 id="vendre-titre">Mettre en vente</h2><span class="muted">Visible par les élèves de KEDGE</span></div>
+        <form id="form-vente">
+          <div class="form-grid">
+            <label class="field-l">Catégorie<select name="categorie" id="cat-vente"></select></label>
+            <label class="field-l">Titre de l'annonce<input name="nom" required maxlength="60"></label>
+            <label class="field-l" id="label-prix">Prix (€)<input name="prix" type="number" min="0" step="1" inputmode="numeric" required></label>
+          </div>
+          <fieldset id="champs-billet" class="stack" hidden>
+            <legend>Ton billet</legend>
+            <div class="form-grid">
+              <label class="field-l">Date de l'événement<input name="date" type="date"></label>
+              <label class="field-l">Prix d'achat par place (€)<input name="prixAchat" type="number" min="0" step="1" inputmode="numeric"></label>
+              <label class="field-l">Nombre de places<select name="places"><option value="1">1</option><option value="2">2</option></select></label>
+            </div>
+            <label class="check-line check-line--light"><input type="checkbox" name="nominatif"><span>Billet nominatif : je le transfère par la billetterie officielle de l'organisateur.</span></label>
+            <label class="check-line check-line--light"><input type="checkbox" name="engagement"><span>Je ne peux plus y aller et je revends au prix d'achat maximum.</span></label>
+          </fieldset>
+          <fieldset class="stack">
+            <legend>Tags</legend>
+            <div class="pills" id="tags-vente"></div>
+            <div class="tag-add">
+              <input name="tagLibre" maxlength="30" placeholder="Ajouter un tag (ex. Taille M)" aria-label="Nouveau tag">
+              <button type="button" class="btn btn--ghost btn--sm" data-tag-add>Ajouter</button>
+            </div>
+          </fieldset>
+          <p class="form-error" id="erreur-vente" role="alert"></p>
+          <div class="pack__actions">
+            <button type="submit" class="btn">Publier l'annonce</button>
+            <button type="button" class="btn btn--ghost" data-sell-close>Annuler</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="pack glass" aria-labelledby="pack-titre">
+        <div class="pack__text">
+          <div class="eyebrow eyebrow--bronze">Disponible le 31 janvier</div>
+          <h2 class="pack__title" id="pack-titre">Léa quitte son studio rue Paradis : tout le nécessaire pour 120 €</h2>
+          <p class="sub">Le pack reste dans le logement. Le prochain locataire s'installe sans rien racheter.</p>
+          <div class="pack__actions">
+            <button type="button" class="btn" data-toast="Pack réservé pour toi pendant 48 h. Léa te contacte.">Voir le pack</button>
+            <a class="btn btn--ghost" href="logement.html?id=paradis">Voir le logement</a>
+          </div>
+        </div>
+        <div class="pack__items" id="pack-items"></div>
+      </section>
+
+      <div class="chips" role="group" aria-label="Catégories" id="categories"></div>
+
+      <div class="tagbar">
+        <span class="eyebrow">Filtrer par tags</span>
+        <div class="chips chips--tags" role="group" aria-label="Tags" id="tags"></div>
+      </div>
+
+      <p class="note" id="note-billets" hidden><span class="ico" data-icon="ticket"></span><span>Billets : revente occasionnelle entre élèves, au prix d'achat maximum, 2 annonces au plus par élève. Un billet nominatif passe uniquement par le transfert officiel de l'organisateur. L'annonce disparaît après l'événement.</span></p>
+
+      <section aria-labelledby="nb-annonces" class="stack">
+        <h2 id="nb-annonces"></h2>
+        <div class="items" id="objets"></div>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
