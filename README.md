@@ -22,7 +22,7 @@ Les polices Outfit et Inter viennent de Google Fonts. Hors connexion, le site ut
 | `marche.html` | 2 · Marché entre élèves | Catégories (dont Billets), filtre par tags cumulables, mise en vente avec tags, revente de places de concert encadrée, pack logement |
 | `parcours.html` | 3 · Mon parcours | Années L3, M1, césure P1 et P2, M2, jusqu'au premier emploi ; années terminées figées ; 3 options par période (haut, cible, sécurité) ; changement de métier M&A ou trading en gardant les acquis ; objectifs du semestre (les 3 prioritaires non faits, puis la liste complète avec ceux déjà faits) ; entrée en L3 ou en M1 ; échelle d'accès ; « Stage signé ? » |
 | `explorer.html` | 3 · Catalogue | Filtré selon le métier visé ; filtres type, prix, format, « Fait rencontrer des pros », ajout au plan |
-| `investir.html` | 4 · Découvrir l'investissement | 5 modules d'initiation, partenaires sélectionnés, mention de risque |
+| `investir.html` | 4 · Découvrir l'investissement | 7 modules d'initiation ; partenaires par type (banque, Bourse, épargne, startups Y Combinator, immobilier, immobilier de luxe, CGP) avec niveau de risque et durée ; mention de risque |
 
 Le bouton « Moi » et certaines actions affichent un message « bientôt » : ce sont les écrans pas encore maquettés.
 

@@ -299,12 +299,27 @@ window.HIVE_DATA = {
     ["Épargne de précaution", "Combien garder de côté"],
     ["Intérêts composés", "Pourquoi commencer tôt"],
     ["Risque", "Ce qu'on peut perdre"],
-    ["Frais", "Ce qui grignote le rendement"]
+    ["Frais", "Ce qui grignote le rendement"],
+    ["Immobilier", "SCPI, crowdfunding ou achat"],
+    ["Capital-risque", "Investir dans des startups"]
   ],
 
+  /* Partenaires d'investissement. risque : 0 (pas de placement) à 5 (perte totale possible). */
   partenaires: [
-    { icone: "lock", nom: "Néobanque partenaire", categorie: "Compte et carte pour étudiants", offre: "Tarif négocié pour les élèves Hive", detail: "Pour gérer son budget et recevoir sa gratification de stage." },
-    { icone: "chart", nom: "Courtier en ligne partenaire", categorie: "PEA et ETF", offre: "Frais de courtage réduits", detail: "Pour investir régulièrement de petites sommes." },
-    { icone: "shield", nom: "Assureur partenaire", categorie: "Assurance-vie", offre: "Versement initial réduit", detail: "Pour une épargne de long terme." }
+    { famille: "Banque", icone: "lock", nom: "Néobanque", categorie: "Compte et carte pour étudiants", offre: "Tarif négocié pour les élèves Hive",
+      detail: "Pour gérer son budget et recevoir sa gratification de stage.", risque: 0, risqueTxt: "Pas de placement", horizon: "Au quotidien" },
+    { famille: "Bourse", icone: "chart", nom: "Courtier en ligne", categorie: "PEA et ETF", offre: "Frais de courtage réduits",
+      detail: "Pour investir régulièrement de petites sommes en Bourse.", risque: 3, risqueTxt: "Moyen · capital non garanti", horizon: "5 ans et plus" },
+    { famille: "Épargne", icone: "shield", nom: "Assureur", categorie: "Assurance-vie", offre: "Versement initial réduit",
+      detail: "Pour une épargne de long terme, avec des supports au choix.", risque: 2, risqueTxt: "Selon les supports choisis", horizon: "8 ans et plus" },
+    { famille: "Startups", icone: "rocket", nom: "Fonds de capital-risque", categorie: "Startups passées par Y Combinator", offre: "Ticket d'entrée réduit pour les élèves Hive",
+      detail: "Investir aux côtés d'un fonds dans des startups sorties de Y Combinator, l'accélérateur de la Silicon Valley.", risque: 5, risqueTxt: "Très élevé · perte totale possible", horizon: "8 à 10 ans, argent bloqué" },
+    { famille: "Immobilier", icone: "building", nom: "Plateforme immobilière", categorie: "SCPI et crowdfunding immobilier", offre: "Frais d'entrée réduits",
+      detail: "Investir dans l'immobilier avec quelques centaines d'euros, sans acheter un logement entier.", risque: 3, risqueTxt: "Moyen · capital non garanti", horizon: "8 ans et plus" },
+    { famille: "Immobilier", icone: "diamond", nom: "Club immobilier de prestige", categorie: "Immobilier de luxe", offre: "Accès aux club deals réservés",
+      detail: "Investir à plusieurs dans des biens d'exception : appartements de standing, villas, hôtels particuliers.", risque: 4, risqueTxt: "Élevé · capital non garanti, peu liquide", horizon: "5 à 7 ans" },
+    { famille: "Conseil", icone: "chat", nom: "Conseiller en gestion de patrimoine", categorie: "CGP · bilan et stratégie", offre: "Premier bilan patrimonial offert",
+      detail: "Pour construire ta stratégie : épargne, investissements, fiscalité et premier achat immobilier.", risque: 0, risqueTxt: "Conseil, pas de placement", horizon: "Rendez-vous en visio ou à Marseille",
+      cta: "Prendre rendez-vous", toast: "Demande envoyée : le conseiller te propose un créneau pour ton bilan." }
   ]
 };

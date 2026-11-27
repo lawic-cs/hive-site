@@ -32,6 +32,10 @@
     cart: '<path d="M4 5h2l2 10h9.5l2-7H7"/><circle cx="9.5" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/>',
     wash: '<rect x="5" y="3.5" width="14" height="17" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6.5h.01M11 6.5h.01"/>',
     cross: '<path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"/>',
+    rocket: '<path d="M12 3c3 1.5 5 4.8 5 8.5V15l-2.5 2h-5L7 15v-3.5C7 7.8 9 4.5 12 3z"/><circle cx="12" cy="10" r="1.6"/><path d="M9.5 17.5 8 21M14.5 17.5 16 21"/>',
+    building: '<path d="M5 20.5V5.5A1.5 1.5 0 0 1 6.5 4h7A1.5 1.5 0 0 1 15 5.5v15"/><path d="M15 10h3.5A1.5 1.5 0 0 1 20 11.5v9M3.5 20.5h17"/><path d="M8.5 8h3M8.5 11.5h3M8.5 15h3"/>',
+    diamond: '<path d="M7 4h10l4 5-9 11L3 9z"/><path d="M3 9h18M9.5 4 8 9l4 11 4-11-1.5-5"/>',
+    chat: '<path d="M5 5h14a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 19 17h-7l-4.5 3.5V17H5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 5 5z"/><path d="M8 10h8M8 13h5"/>',
     ticket: '<path d="M3.5 8A1.5 1.5 0 0 1 5 6.5h14A1.5 1.5 0 0 1 20.5 8v2.2a1.8 1.8 0 0 0 0 3.6V16a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 16v-2.2a1.8 1.8 0 0 0 0-3.6z"/><path d="M14.5 7v1.5M14.5 11.25v1.5M14.5 15.5V17"/>',
     filter: '<path d="M4 6h16M7 12h10M10 18h4"/>',
     home: '<path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/>',
@@ -911,9 +915,10 @@
       $("#modules").innerHTML = M.map(function (m, i) {
         var cls = i < done ? " is-done" : (i === done ? " is-now" : "");
         var etat = i < done ? " · fait" : (i === done ? " · à suivre" : "");
-        return '<li><button type="button" class="module' + cls + '" data-module="' + i + '"><small>0' + (i + 1) + esc(etat) + "</small><strong>" + esc(m[0]) + "</strong><span>" + esc(m[1]) + "</span></button></li>";
+        return '<li><button type="button" class="module' + cls + '" data-module="' + i + '"><small>' + (i < 9 ? "0" : "") + (i + 1) + esc(etat) + "</small><strong>" + esc(m[0]) + "</strong><span>" + esc(m[1]) + "</span></button></li>";
       }).join("");
       $("#progression").textContent = "Initiation : " + done + " module" + (done > 1 ? "s" : "") + " sur " + M.length;
+      $("#barre").setAttribute("aria-valuemax", M.length);
       var bar = $("#barre");
       bar.setAttribute("aria-valuenow", done);
       bar.firstElementChild.style.width = (done / M.length * 100) + "%";
@@ -930,12 +935,33 @@
       toast(done === M.length ? "Initiation terminée. Bravo !" : "Module « " + M[i][0] + " » terminé.");
     });
 
-    $("#partenaires").innerHTML = D.partenaires.map(function (p) {
-      return '<article class="partner glass"><div class="partner__head"><span class="tile">' + svg(p.icone, 20) + "</span>" +
-        '<span><span class="partner__name">' + esc(p.nom) + '</span><span class="muted">' + esc(p.categorie) + "</span></span></div>" +
-        tags([[p.offre, true]]) + '<p class="sub">' + esc(p.detail) + "</p>" +
-        '<button type="button" class="btn btn--ghost" data-toast="Demande envoyée : le partenaire t\'envoie les conditions de l\'offre Hive.">Découvrir l\'offre</button></article>';
+    var familles = ["Tout"].concat(D.partenaires.map(function (p) { return p.famille; }).filter(function (f, i, a) { return a.indexOf(f) === i; }));
+    var famille = "Tout";
+    $("#familles").innerHTML = familles.map(function (f, i) {
+      return '<button type="button" class="chip" data-famille="' + esc(f) + '" aria-pressed="' + (i === 0) + '">' + esc(f) + "</button>";
     }).join("");
+    function risque(p) {
+      var bars = "";
+      for (var i = 1; i <= 5; i++) bars += '<i class="' + (i <= p.risque ? "on" : "") + '"></i>';
+      return '<div class="risk"><span class="risk__bars" role="img" aria-label="Niveau de risque ' + p.risque + ' sur 5">' + bars + "</span><span>" + esc(p.risqueTxt) + "</span></div>";
+    }
+    function renderPartenaires() {
+      $("#partenaires").innerHTML = D.partenaires.filter(function (p) { return famille === "Tout" || p.famille === famille; }).map(function (p) {
+        return '<article class="partner glass"><div class="partner__head"><span class="tile">' + svg(p.icone, 20) + "</span>" +
+          '<span><span class="partner__name">' + esc(p.nom) + '</span><span class="muted">' + esc(p.categorie) + "</span></span></div>" +
+          tags([[p.offre, true]]) + '<p class="sub">' + esc(p.detail) + "</p>" +
+          risque(p) + '<span class="partner__horizon">' + ico("cal") + esc(p.horizon) + "</span>" +
+          '<button type="button" class="btn btn--ghost" data-toast="' + esc(p.toast || "Demande envoyée : le partenaire t'envoie les conditions de l'offre Hive.") + '">' + esc(p.cta || "Découvrir l'offre") + "</button></article>";
+      }).join("");
+    }
+    $("#familles").addEventListener("click", function (e) {
+      var b = e.target.closest("[data-famille]");
+      if (!b) return;
+      famille = b.getAttribute("data-famille");
+      $$("#familles [data-famille]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      renderPartenaires();
+    });
+    renderPartenaires();
     renderModules();
   }
 

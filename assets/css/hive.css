@@ -531,3 +531,13 @@ button.item { width: 100%; text-align: left; cursor: pointer; color: var(--encre
 .action__date { flex: none; font-size: 12px; font-weight: 600; color: var(--galet); white-space: nowrap; }
 .action .tag { flex: none; }
 .objectifs-btn { align-self: flex-start; }
+
+/* ---------- Investir : niveau de risque ---------- */
+.risk { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; }
+.risk__bars { display: inline-flex; gap: 3px; }
+.risk__bars i { width: 14px; height: 6px; border-radius: 3px; background: rgba(90, 86, 79, 0.2); }
+.risk__bars i.on { background: var(--moka); }
+.partner__horizon { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--galet); }
+.partner__horizon .ico svg { width: 15px; height: 15px; }
+.partner .sub { flex: 1; }
+.partner .tag { white-space: normal; height: auto; min-height: 24px; padding: 3px 9px; line-height: 16px; }
